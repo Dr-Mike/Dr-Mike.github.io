@@ -156,12 +156,12 @@
         return false;
       }
       function saveOptions() {
-	mTimezone = $('#timezone').prop("selectedIndex");
-	localStorage.setItem("timezone", mTimezone); 
+	//mTimezone = $('#timezone').prop("selectedIndex");
+	//localStorage.setItem("timezone", mTimezone); 
         var options = {
           'units': $('input:radio[name=units]:checked').val(),
-	'timezone': parseInt(mTimezone)
-        /
+	//'timezone': parseInt(mTimezone)
+          'timezone': $('#timezone').prop("selectedIndex")
         }
         return options;
       }
