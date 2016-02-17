@@ -184,7 +184,8 @@
         } else {
           $('input:radio[name=units][value=fahrenheit]').prop('checked', true).trigger("click");
         }
-	
+	$('#timezone').prop("selectedIndex",mTimezone);
+
         $('#invert_color').val(getQueryVariable('invert_color')).change();
         // Disable location field based on GPS toggle
         $('#location').prop('disabled', $('#gps_switch').val() == "true");
