@@ -16,7 +16,17 @@
 	  <h2>Aviator v2.0</h2>
       
       <form id="configure-form" class="form-configure well" action="#" method="POST">
-        
+        <h4>Temperature</h4>
+        <p><small>Temperature units.</small></p>
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-primary">
+            <input type="radio" name="invert" id="invert1" value="1"> Fahrenheit
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="invert" id="invert2" value="0"> Celcius
+          </label>
+        </div>
+        <hr />
         <h4>Invert</h4>
         <p><small>Invert the colour scheme.</small></p>
         <div class="btn-group" data-toggle="buttons">
@@ -182,7 +192,7 @@
     
     <script>
       //var mBigMode;
-      //var mSeconds;
+      var mTemp;
       var mInvert;
       var mBluetoothvibe;
       //var mVibeMinutes;
@@ -194,7 +204,7 @@
       $().ready(function () {
       
         //mBigMode = parseInt(localStorage.getItem("bigmode"));      
-        //mSeconds = parseInt(localStorage.getItem("seconds"));      
+        mTemp = parseInt(localStorage.getItem("temp"));      
         mInvert = parseInt(localStorage.getItem("invert"));
         mBluetoothvibe = parseInt(localStorage.getItem("bluetoothvibe"));
         //mVibeMinutes = parseInt(localStorage.getItem("vibeminutes"));
@@ -204,10 +214,10 @@
         mTimezone = parseInt(localStorage.getItem("timezone"));
         /*if(isNaN(mBigMode)) {
           mBigMode = 0;
-        }
-        if(isNaN(mSeconds)) {
-          mSeconds = 1;
         }*/
+        if(isNaN(mTemp)) {
+          mTemp = 1;
+        }
         if(isNaN(mInvert)) {
           mInvert = 0;
         }
@@ -244,22 +254,22 @@
           
           $('#bigmode2').prop('checked', true);
           $('#bigmode2').parent().addClass('active'); 
-        }  
+        }  */
         
-        if(mSeconds) {
-          $('#seconds1').prop('checked', true);
-          $('#seconds1').parent().addClass('active');
+        if(mTemp) {
+          $('#temp1').prop('checked', true);
+          $('#temp1').parent().addClass('active');
           
-          $('#seconds2').prop('checked', false);
-          $('#seconds2').parent().removeClass('active');
+          $('#temp2').prop('checked', false);
+          $('#temp2').parent().removeClass('active');
         } 
         else {
-          $('#seconds1').prop('checked', false);
-          $('#seconds1').parent().removeClass('active');
+          $('#temp1').prop('checked', false);
+          $('#temp1').parent().removeClass('active');
           
-          $('#seconds2').prop('checked', true);
-          $('#seconds2').parent().addClass('active'); 
-        }*/
+          $('#temp2').prop('checked', true);
+          $('#temp2').parent().addClass('active'); 
+        }
         
         if(mInvert) {
           $('#invert1').prop('checked', true);
@@ -363,7 +373,7 @@
       });
       $("#configure-form").submit(function(e) {  
         //mBigMode = $('#bigmode1').prop('checked') ? 1 : 0;
-        //mSeconds = $('#seconds1').prop('checked') ? 1 : 0;
+        mTemp = $('#temp1').prop('checked') ? 1 : 0;
         mInvert = $('#invert1').prop('checked') ? 1 : 0;
         mBluetoothvibe = $('#bluetoothvibe1').prop('checked') ? 1 : 0;
         //mVibeMinutes = $('#vibeminutes1').val();
@@ -378,7 +388,7 @@
         mBackground = $('#background3').prop('checked') ? 2 : mBackground;
         mBackground = $('#background4').prop('checked') ? 3 : mBackground;
         //localStorage.setItem("bigmode", mBigMode);  
-        //localStorage.setItem("seconds", mSeconds);  
+        localStorage.setItem("temp", mTemp);  
         localStorage.setItem("invert", mInvert); 
         localStorage.setItem("bluetoothvibe", mBluetoothvibe); 
         //localStorage.setItem("vibeminutes", mVibeMinutes); 
@@ -389,7 +399,7 @@
         
         var j = {
           //bigmode : parseInt(mBigMode),
-          //seconds : parseInt(mSeconds),
+          temp : parseInt(mTemp),
           invert : parseInt(mInvert),
           bluetoothvibe : parseInt(mBluetoothvibe),
           //vibeminutes: parseInt(mVibeMinutes),
