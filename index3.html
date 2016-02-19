@@ -52,20 +52,6 @@
           </label>
         </div>
         <hr />
-        <h4>Style</h4>
-        <p><small>Choose display style.</small></p>
-        <div class="btn-group" data-toggle="buttons">
-          <label class="btn btn-primary">
-            <input type="radio" name="style" id="style1" value="0"> Date
-          </label>
-          <label class="btn btn-primary">
-            <input type="radio" name="style" id="style2" value="1"> Date (US)
-          </label>
-          <label class="btn btn-primary">
-            <input type="radio" name="style" id="style3" value="2"> Local/Timezone
-          </label>
-        </div>
-        <hr />
         <h4>Timezone</h4>
         <p><small>Secondary timezone. Requires: Style='Local/Timezone'</small></p>
         <div class="btn-group" data-toggle="buttons">
@@ -189,38 +175,23 @@
       $().ready(function () {
       
         mUnits = parseInt(localStorage.getItem("units"));      
-        mSeconds = parseInt(localStorage.getItem("seconds"));      
+        //mSeconds = parseInt(localStorage.getItem("seconds"));      
         mInvert = parseInt(localStorage.getItem("invert"));
         mBluetoothvibe = parseInt(localStorage.getItem("bluetoothvibe"));
-        mVibeMinutes = parseInt(localStorage.getItem("vibeminutes"));
-        mHands = parseInt(localStorage.getItem("hands"));
-        mStyle = parseInt(localStorage.getItem("style"));
-        mBackground = parseInt(localStorage.getItem("background"));
+        //mVibeMinutes = parseInt(localStorage.getItem("vibeminutes"));
+        //mHands = parseInt(localStorage.getItem("hands"));
+        //mStyle = parseInt(localStorage.getItem("style"));
+        //mBackground = parseInt(localStorage.getItem("background"));
         mTimezone = parseInt(localStorage.getItem("timezone"));
         if(isNaN(mUnits)) {
           mBigMode = 1;
-        }
-        if(isNaN(mSeconds)) {
-          mSeconds = 1;
         }
         if(isNaN(mInvert)) {
           mInvert = 0;
         }
         if(isNaN(mBluetoothvibe)) {
           mBluetoothvibe = 1;
-        }
-        if(isNaN(mVibeMinutes)) {
-          mVibeMinutes = 0;
-        }   
-        if(isNaN(mHands)) {
-          mHands = 1;
         } 
-        if(isNaN(mStyle)) {
-          mStyle = 0;
-        } 
-        if(isNaN(mBackground)) {
-          mBackground = 0;
-        }  
         if(isNaN(mTimezone)) {
           mTimezone = 0;
         } 
@@ -241,37 +212,6 @@
           $('#units2').parent().addClass('active'); 
         }  
         
-        if(mSeconds) {
-          $('#seconds1').prop('checked', true);
-          $('#seconds1').parent().addClass('active');
-          
-          $('#seconds2').prop('checked', false);
-          $('#seconds2').parent().removeClass('active');
-        } 
-        else {
-          $('#seconds1').prop('checked', false);
-          $('#seconds1').parent().removeClass('active');
-          
-          $('#seconds2').prop('checked', true);
-          $('#seconds2').parent().addClass('active'); 
-        }
-        
-        if(mInvert) {
-          $('#invert1').prop('checked', true);
-          $('#invert1').parent().addClass('active');
-          
-          $('#invert2').prop('checked', false);
-          $('#invert2').parent().removeClass('active');
-        } 
-        else {
-          $('#invert1').prop('checked', false);
-          $('#invert1').parent().removeClass('active');
-          
-          $('#invert2').prop('checked', true);
-          $('#invert2').parent().addClass('active'); 
-        }
-        
-        
         if(mBluetoothvibe) {
           $('#bluetoothvibe1').prop('checked', true);
           $('#bluetoothvibe1').parent().addClass('active');
@@ -287,111 +227,44 @@
           $('#bluetoothvibe2').parent().addClass('active'); 
         }
         
-        
-        $('#vibeminutes1').val(mVibeMinutes);
-        
-        if(mHands) {
-          $('#hands1').prop('checked', true);
-          $('#hands1').parent().addClass('active');
-          
-          $('#hands2').prop('checked', false);
-          $('#hands2').parent().removeClass('active');
-        } 
-        else {
-          $('#hands1').prop('checked', false);
-          $('#hands1').parent().removeClass('active');
-          
-          $('#hands2').prop('checked', true);
-          $('#hands2').parent().addClass('active'); 
-        }
- 
-        $('#style1').prop('checked', false);
-        $('#style1').parent().removeClass('active');
-        $('#style2').prop('checked', false);
-        $('#style2').parent().removeClass('active');
-        $('#style3').prop('checked', false);
-        $('#style3').parent().removeClass('active');
-        switch(mStyle) {
-          case 0:
-            $('#style1').prop('checked', true);
-            $('#style1').parent().addClass('active');
-            break;
-          case 1:
-            $('#style2').prop('checked', true);
-            $('#style2').parent().addClass('active');
-            break;
-          case 2:
-            $('#style3').prop('checked', true);
-            $('#style3').parent().addClass('active');
-            break;      
-        }
-  
-        $('#background1').prop('checked', false);
-        $('#background1').parent().removeClass('active');
-        $('#background2').prop('checked', false);
-        $('#background2').parent().removeClass('active');
-        $('#background3').prop('checked', false);
-        $('#background3').parent().removeClass('active');
-        $('#background4').prop('checked', false);
-        $('#background4').parent().removeClass('active');
-        
-        switch(mBackground) {
-          case 0:
-            $('#background1').prop('checked', true);
-            $('#background1').parent().addClass('active');
-            break;
-          case 1:
-            $('#background2').prop('checked', true);
-            $('#background2').parent().addClass('active');
-            break;
-          case 2:
-            $('#background3').prop('checked', true);
-            $('#background3').parent().addClass('active');
-            break;   
-          case 3:
-            $('#background4').prop('checked', true);
-            $('#background4').parent().addClass('active');
-            break; 
-        }
-        
         $('#timezone').prop("selectedIndex",mTimezone);
       });
       $("#configure-form").submit(function(e) {  
         mUnits = $('#bigmode1').prop('checked') ? 1 : 0;
-        mSeconds = $('#seconds1').prop('checked') ? 1 : 0;
+        //mSeconds = $('#seconds1').prop('checked') ? 1 : 0;
         mInvert = $('#invert1').prop('checked') ? 1 : 0;
         mBluetoothvibe = $('#bluetoothvibe1').prop('checked') ? 1 : 0;
-        mVibeMinutes = $('#vibeminutes1').val();
-        mHands = $('#hands1').prop('checked') ? 1 : 0;
+        //mVibeMinutes = $('#vibeminutes1').val();
+        //mHands = $('#hands1').prop('checked') ? 1 : 0;
         mTimezone = $('#timezone').prop("selectedIndex");
         
-        mStyle = $('#style1').prop('checked') ? 0 : mStyle;
+        /*mStyle = $('#style1').prop('checked') ? 0 : mStyle;
         mStyle = $('#style2').prop('checked') ? 1 : mStyle;
         mStyle = $('#style3').prop('checked') ? 2 : mStyle;
         mBackground = $('#background1').prop('checked') ? 0 : mBackground;
         mBackground = $('#background2').prop('checked') ? 1 : mBackground;
         mBackground = $('#background3').prop('checked') ? 2 : mBackground;
-        mBackground = $('#background4').prop('checked') ? 3 : mBackground;
+        mBackground = $('#background4').prop('checked') ? 3 : mBackground;*/
         localStorage.setItem("units", mUnits);  
-        localStorage.setItem("seconds", mSeconds);  
+        //localStorage.setItem("seconds", mSeconds);  
         localStorage.setItem("invert", mInvert); 
         localStorage.setItem("bluetoothvibe", mBluetoothvibe); 
-        localStorage.setItem("vibeminutes", mVibeMinutes); 
-        localStorage.setItem("hands", mHands); 
-        localStorage.setItem("style", mStyle); 
-        localStorage.setItem("background", mBackground); 
+        //localStorage.setItem("vibeminutes", mVibeMinutes); 
+        //localStorage.setItem("hands", mHands); 
+        //localStorage.setItem("style", mStyle); 
+        //localStorage.setItem("background", mBackground); 
         localStorage.setItem("timezone", mTimezone); 
         
         var j = {
           units : parseInt(mUnits),
-          seconds : parseInt(mSeconds),
+          //seconds : parseInt(mSeconds),
           invert : parseInt(mInvert),
           bluetoothvibe : parseInt(mBluetoothvibe),
-          vibeminutes: parseInt(mVibeMinutes),
-          hands: parseInt(mHands),
-          style: parseInt(mStyle),
+          //vibeminutes: parseInt(mVibeMinutes),
+          //hands: parseInt(mHands),
+          //style: parseInt(mStyle),
           timezone: parseInt(mTimezone),
-          background: parseInt(mBackground)
+          //background: parseInt(mBackground)
         };
         
         window.location.href = "pebblejs://close#" + JSON.stringify(j);
