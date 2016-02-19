@@ -23,14 +23,14 @@
         <p><small>Select temperature units.</small></p>
         <div class="btn-group" data-toggle="buttons">
           <label class="btn btn-primary">
-            <input type="radio" name="bigmode" id="bigmode1" value="1"> Yes
+            <input type="radio" name="bigmode" id="units1" value="1"> Fahrenheit
           </label>
           <label class="btn btn-primary">
-            <input type="radio" name="bigmode" id="bigmode2" value="0"> No
+            <input type="radio" name="bigmode" id="units2" value="0"> Celsius
           </label>
         </div>
         <hr />      
-        <h4>Seconds</h4>
+        /*<h4>Seconds</h4>
         <p><small>Display seconds units on digital clock. When using 'Big Mode', this toggles blinking cursor.</small></p>
         <div class="btn-group" data-toggle="buttons">
           <label class="btn btn-primary">
@@ -40,7 +40,7 @@
             <input type="radio" name="seconds" id="seconds2" value="0"> No
           </label>
         </div>
-        <hr />
+        <hr />*/
         <h4>Invert</h4>
         <p><small>Invert the colour scheme.</small></p>
         <div class="btn-group" data-toggle="buttons">
@@ -222,7 +222,7 @@
     </div>
     
     <script>
-      var mBigMode;
+      var mUnits;
       var mSeconds;
       var mInvert;
       var mBluetoothvibe;
@@ -234,7 +234,7 @@
       
       $().ready(function () {
       
-        mBigMode = parseInt(localStorage.getItem("bigmode"));      
+        mUnits = parseInt(localStorage.getItem("units"));      
         mSeconds = parseInt(localStorage.getItem("seconds"));      
         mInvert = parseInt(localStorage.getItem("invert"));
         mBluetoothvibe = parseInt(localStorage.getItem("bluetoothvibe"));
@@ -243,8 +243,8 @@
         mStyle = parseInt(localStorage.getItem("style"));
         mBackground = parseInt(localStorage.getItem("background"));
         mTimezone = parseInt(localStorage.getItem("timezone"));
-        if(isNaN(mBigMode)) {
-          mBigMode = 0;
+        if(isNaN(mUnits)) {
+          mBigMode = 1;
         }
         if(isNaN(mSeconds)) {
           mSeconds = 1;
@@ -272,19 +272,19 @@
         } 
         
         
-        if(mBigMode) {
-          $('#bigmode1').prop('checked', true);
-          $('#bigmode1').parent().addClass('active');
+        if(mUnits) {
+          $('#units1').prop('checked', true);
+          $('#units1').parent().addClass('active');
           
-          $('#bigmode2').prop('checked', false);
-          $('#bigmode2').parent().removeClass('active');
+          $('#units2').prop('checked', false);
+          $('#units2').parent().removeClass('active');
         } 
         else {
-          $('#bigmode1').prop('checked', false);
-          $('#bigmode1').parent().removeClass('active');
+          $('#units1').prop('checked', false);
+          $('#units1').parent().removeClass('active');
           
-          $('#bigmode2').prop('checked', true);
-          $('#bigmode2').parent().addClass('active'); 
+          $('#units2').prop('checked', true);
+          $('#units2').parent().addClass('active'); 
         }  
         
         if(mSeconds) {
@@ -403,7 +403,7 @@
         $('#timezone').prop("selectedIndex",mTimezone);
       });
       $("#configure-form").submit(function(e) {  
-        mBigMode = $('#bigmode1').prop('checked') ? 1 : 0;
+        mUnits = $('#bigmode1').prop('checked') ? 1 : 0;
         mSeconds = $('#seconds1').prop('checked') ? 1 : 0;
         mInvert = $('#invert1').prop('checked') ? 1 : 0;
         mBluetoothvibe = $('#bluetoothvibe1').prop('checked') ? 1 : 0;
@@ -418,7 +418,7 @@
         mBackground = $('#background2').prop('checked') ? 1 : mBackground;
         mBackground = $('#background3').prop('checked') ? 2 : mBackground;
         mBackground = $('#background4').prop('checked') ? 3 : mBackground;
-        localStorage.setItem("bigmode", mBigMode);  
+        localStorage.setItem("units", mUnits);  
         localStorage.setItem("seconds", mSeconds);  
         localStorage.setItem("invert", mInvert); 
         localStorage.setItem("bluetoothvibe", mBluetoothvibe); 
@@ -429,7 +429,7 @@
         localStorage.setItem("timezone", mTimezone); 
         
         var j = {
-          bigmode : parseInt(mBigMode),
+          units : parseInt(mUnits),
           seconds : parseInt(mSeconds),
           invert : parseInt(mInvert),
           bluetoothvibe : parseInt(mBluetoothvibe),
