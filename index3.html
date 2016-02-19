@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html manifest="manifest.appcache">
 <head>
-	<title>SkyMaster</title>
+	<title>Aviator v2.0 Config</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -13,17 +13,28 @@
 <body>
     <div class="container">
 
-	  <h2>SkyMaster</h2>
+	  <h2>Aviator v2.0</h2>
       
       <form id="configure-form" class="form-configure well" action="#" method="POST">
-        <h4>Temperature</h4>
-        <p><small>Temperature units.</small></p>
+        <h4>Big Mode</h4>
+        <p><small>Bigger fonts for those of us with poor eyesight.</small></p>
         <div class="btn-group" data-toggle="buttons">
           <label class="btn btn-primary">
-            <input type="radio" name="temp" id="temp1" value="1"> Fahrenheit
+            <input type="radio" name="bigmode" id="bigmode1" value="1"> Yes
           </label>
           <label class="btn btn-primary">
-            <input type="radio" name="temp" id="temp2" value="0"> Celsius
+            <input type="radio" name="bigmode" id="bigmode2" value="0"> No
+          </label>
+        </div>
+        <hr />      
+        <h4>Seconds</h4>
+        <p><small>Display seconds units on digital clock. When using 'Big Mode', this toggles blinking cursor.</small></p>
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-primary">
+            <input type="radio" name="seconds" id="seconds1" value="1"> Yes
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="seconds" id="seconds2" value="0"> No
           </label>
         </div>
         <hr />
@@ -49,8 +60,25 @@
           </label>
         </div>
         <hr />
-        
-        
+        <h4>Good Vibrations</h4>
+        <p><small>Vibrate every n minutes. <em>(0 to disable)</em></small></p>
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-primary">
+            <input type="text" name="vibeminutes" id="vibeminutes1" value="0">
+          </label>
+        </div>
+        <hr />
+        <h4>Hands</h4>
+        <p><small>Show hands on the clock face.</small></p>
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-primary">
+            <input type="radio" name="hands" id="hands1" value="1"> Yes
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="hands" id="hands2" value="0"> No
+          </label>
+        </div>
+        <hr />
         <h4>Style</h4>
         <p><small>Choose display style.</small></p>
         <div class="btn-group" data-toggle="buttons">
@@ -187,36 +215,36 @@
 	  </div>
 
     <div class="footer container">
-    	<p>By Mike_D</p>
+    	<p>Aviator v2.0 by <a href="http://twitter.com/orviwan">orviwan</a> and <a href="http://twitter.com/jnmattern">Jnm</a>. Based on a original design by ninthsrw01.</p>
     </div>
     
     <script>
-      //var mBigMode;
-      var mTemp;
+      var mBigMode;
+      var mSeconds;
       var mInvert;
       var mBluetoothvibe;
-      //var mVibeMinutes;
-      //var mHands;
-      //var mStyle;
+      var mVibeMinutes;
+      var mHands;
+      var mStyle;
       var mBackground;
       var mTimezone;
       
       $().ready(function () {
       
-        //mBigMode = parseInt(localStorage.getItem("bigmode"));      
-        mTemp = parseInt(localStorage.getItem("temp"));      
+        mBigMode = parseInt(localStorage.getItem("bigmode"));      
+        mSeconds = parseInt(localStorage.getItem("seconds"));      
         mInvert = parseInt(localStorage.getItem("invert"));
         mBluetoothvibe = parseInt(localStorage.getItem("bluetoothvibe"));
-        //mVibeMinutes = parseInt(localStorage.getItem("vibeminutes"));
-        //mHands = parseInt(localStorage.getItem("hands"));
-        //mStyle = parseInt(localStorage.getItem("style"));
+        mVibeMinutes = parseInt(localStorage.getItem("vibeminutes"));
+        mHands = parseInt(localStorage.getItem("hands"));
+        mStyle = parseInt(localStorage.getItem("style"));
         mBackground = parseInt(localStorage.getItem("background"));
         mTimezone = parseInt(localStorage.getItem("timezone"));
-        /*if(isNaN(mBigMode)) {
+        if(isNaN(mBigMode)) {
           mBigMode = 0;
-        }*/
-        if(isNaN(mTemp)) {
-          mTemp = 1;
+        }
+        if(isNaN(mSeconds)) {
+          mSeconds = 1;
         }
         if(isNaN(mInvert)) {
           mInvert = 0;
@@ -224,7 +252,7 @@
         if(isNaN(mBluetoothvibe)) {
           mBluetoothvibe = 1;
         }
-        /*if(isNaN(mVibeMinutes)) {
+        if(isNaN(mVibeMinutes)) {
           mVibeMinutes = 0;
         }   
         if(isNaN(mHands)) {
@@ -232,7 +260,7 @@
         } 
         if(isNaN(mStyle)) {
           mStyle = 0;
-        } */
+        } 
         if(isNaN(mBackground)) {
           mBackground = 0;
         }  
@@ -241,7 +269,7 @@
         } 
         
         
-        /*if(mBigMode) {
+        if(mBigMode) {
           $('#bigmode1').prop('checked', true);
           $('#bigmode1').parent().addClass('active');
           
@@ -254,21 +282,21 @@
           
           $('#bigmode2').prop('checked', true);
           $('#bigmode2').parent().addClass('active'); 
-        }  */
+        }  
         
-        if(mTemp) {
-          $('#temp1').prop('checked', true);
-          $('#temp1').parent().addClass('active');
+        if(mSeconds) {
+          $('#seconds1').prop('checked', true);
+          $('#seconds1').parent().addClass('active');
           
-          $('#temp2').prop('checked', false);
-          $('#temp2').parent().removeClass('active');
+          $('#seconds2').prop('checked', false);
+          $('#seconds2').parent().removeClass('active');
         } 
         else {
-          $('#temp1').prop('checked', false);
-          $('#temp1').parent().removeClass('active');
+          $('#seconds1').prop('checked', false);
+          $('#seconds1').parent().removeClass('active');
           
-          $('#temp2').prop('checked', true);
-          $('#temp2').parent().addClass('active'); 
+          $('#seconds2').prop('checked', true);
+          $('#seconds2').parent().addClass('active'); 
         }
         
         if(mInvert) {
@@ -305,7 +333,7 @@
         
         $('#vibeminutes1').val(mVibeMinutes);
         
-        /*if(mHands) {
+        if(mHands) {
           $('#hands1').prop('checked', true);
           $('#hands1').parent().addClass('active');
           
@@ -339,7 +367,7 @@
             $('#style3').prop('checked', true);
             $('#style3').parent().addClass('active');
             break;      
-        }*/
+        }
   
         $('#background1').prop('checked', false);
         $('#background1').parent().removeClass('active');
@@ -372,39 +400,39 @@
         $('#timezone').prop("selectedIndex",mTimezone);
       });
       $("#configure-form").submit(function(e) {  
-        //mBigMode = $('#bigmode1').prop('checked') ? 1 : 0;
-        //mTemp = $('#temp1').prop('checked') ? 1 : 0;
+        mBigMode = $('#bigmode1').prop('checked') ? 1 : 0;
+        mSeconds = $('#seconds1').prop('checked') ? 1 : 0;
         mInvert = $('#invert1').prop('checked') ? 1 : 0;
         mBluetoothvibe = $('#bluetoothvibe1').prop('checked') ? 1 : 0;
-        //mVibeMinutes = $('#vibeminutes1').val();
-        //mHands = $('#hands1').prop('checked') ? 1 : 0;
+        mVibeMinutes = $('#vibeminutes1').val();
+        mHands = $('#hands1').prop('checked') ? 1 : 0;
         mTimezone = $('#timezone').prop("selectedIndex");
         
-        /*mStyle = $('#style1').prop('checked') ? 0 : mStyle;
+        mStyle = $('#style1').prop('checked') ? 0 : mStyle;
         mStyle = $('#style2').prop('checked') ? 1 : mStyle;
-        mStyle = $('#style3').prop('checked') ? 2 : mStyle;*/
+        mStyle = $('#style3').prop('checked') ? 2 : mStyle;
         mBackground = $('#background1').prop('checked') ? 0 : mBackground;
         mBackground = $('#background2').prop('checked') ? 1 : mBackground;
         mBackground = $('#background3').prop('checked') ? 2 : mBackground;
         mBackground = $('#background4').prop('checked') ? 3 : mBackground;
-        //localStorage.setItem("bigmode", mBigMode);  
-        //localStorage.setItem("temp", mTemp);  
+        localStorage.setItem("bigmode", mBigMode);  
+        localStorage.setItem("seconds", mSeconds);  
         localStorage.setItem("invert", mInvert); 
         localStorage.setItem("bluetoothvibe", mBluetoothvibe); 
-        //localStorage.setItem("vibeminutes", mVibeMinutes); 
-        //localStorage.setItem("hands", mHands); 
-        //localStorage.setItem("style", mStyle); 
+        localStorage.setItem("vibeminutes", mVibeMinutes); 
+        localStorage.setItem("hands", mHands); 
+        localStorage.setItem("style", mStyle); 
         localStorage.setItem("background", mBackground); 
         localStorage.setItem("timezone", mTimezone); 
         
         var j = {
-          //bigmode : parseInt(mBigMode),
-          //temp : parseInt(mTemp),
+          bigmode : parseInt(mBigMode),
+          seconds : parseInt(mSeconds),
           invert : parseInt(mInvert),
           bluetoothvibe : parseInt(mBluetoothvibe),
-          //vibeminutes: parseInt(mVibeMinutes),
-          //hands: parseInt(mHands),
-          //style: parseInt(mStyle),
+          vibeminutes: parseInt(mVibeMinutes),
+          hands: parseInt(mHands),
+          style: parseInt(mStyle),
           timezone: parseInt(mTimezone),
           background: parseInt(mBackground)
         };
