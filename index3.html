@@ -31,7 +31,7 @@
         </div>
         <hr />
         <h4>Color scheme</h4>
-        //<p><small>Color scheme.</small></p>
+        <p><small>Select color scheme.</small></p>
         <div class="btn-group" data-toggle="buttons">
           <label class="btn btn-primary">
             <input type="radio" name="invert" id="invert1" value="1"> Dark
@@ -53,7 +53,7 @@
         </div>
         <hr />
         <h4>Timezone</h4>
-        <p><small>Secondary timezone. Requires: Style='Local/Timezone'</small></p>
+        <p><small>Secondary timezone.</small></p>
         <div class="btn-group" data-toggle="buttons">
           <label class="btn btn-primary">
               <select id="timezone">
@@ -183,7 +183,7 @@
         //mStyle = parseInt(localStorage.getItem("style"));
         //mBackground = parseInt(localStorage.getItem("background"));
         mTimezone = parseInt(localStorage.getItem("timezone"));
-        if(isNaN(mUnits)) {
+        /*if(isNaN(mUnits)) {
           mUnits = fahrenheit;
         }
         if(isNaN(mInvert)) {
@@ -194,7 +194,7 @@
         } 
         if(isNaN(mTimezone)) {
           mTimezone = 0;
-        } 
+        } */
         
         
         if(mUnits) {
