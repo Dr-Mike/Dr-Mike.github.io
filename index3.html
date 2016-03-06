@@ -184,7 +184,7 @@
         //mBackground = parseInt(localStorage.getItem("background"));
         mTimezone = parseInt(localStorage.getItem("timezone"));
         if(isNaN(mUnits)) {
-          mUnits = 1;
+          mUnits = fahrenheit;
         }
         if(isNaN(mInvert)) {
           mInvert = 0;
@@ -230,7 +230,7 @@
         $('#timezone').prop("selectedIndex",mTimezone);
       });
       $("#configure-form").submit(function(e) {  
-        mUnits = $('#units1').prop('checked') ? 1 : 0;
+        mUnits = $('#units1').prop('checked') ? fahrenheit : celsius;
         //mSeconds = $('#seconds1').prop('checked') ? 1 : 0;
         mInvert = $('#invert1').prop('checked') ? 1 : 0;
         mBluetoothvibe = $('#bluetoothvibe1').prop('checked') ? 1 : 0;
