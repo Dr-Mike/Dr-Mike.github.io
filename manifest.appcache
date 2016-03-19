@@ -6,3 +6,7 @@ index4.html
 # Javascript
 js/bootstrap.min.js
 js/jquery.min.js
+
+# Stylesheets
+css/bootstrap.min.css
+css/bootstrap-theme.min.css
