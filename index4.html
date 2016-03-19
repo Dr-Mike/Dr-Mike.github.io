@@ -217,7 +217,22 @@
           
           $('#units2').prop('checked', true);
           $('#units2').parent().addClass('active'); 
-        }  
+        } 
+        
+        if(mInvert) {
+          $('#units1').prop('checked', true);
+          $('#units1').parent().addClass('active');
+          
+          $('#units2').prop('checked', false);
+          $('#units2').parent().removeClass('active');
+        } 
+        else {
+          $('#units1').prop('checked', false);
+          $('#units1').parent().removeClass('active');
+          
+          $('#units2').prop('checked', true);
+          $('#units2').parent().addClass('active'); 
+        }
         
         if(mBluetoothvibe) {
           $('#bluetoothvibe1').prop('checked', true);
