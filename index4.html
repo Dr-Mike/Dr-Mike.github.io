@@ -243,7 +243,7 @@
         $('#timezone').prop("selectedIndex",mTimezone);
       });
       $("#configure-form").submit(function(e) {  
-        mUnits = $('#units1').prop('checked') ? fahrenheit : celsius;
+        mUnits = $('#units1').prop('checked') ? 1 : 0;
         //mSeconds = $('#seconds1').prop('checked') ? 1 : 0;
         mInvert = $('#invert1').prop('checked') ? 1 : 0;
         mBluetoothvibe = $('#bluetoothvibe1').prop('checked') ? 1 : 0;
