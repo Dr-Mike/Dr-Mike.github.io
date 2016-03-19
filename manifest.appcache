@@ -1,12 +1,9 @@
 CACHE MANIFEST
 # 28-03-2014 - v0.1
 
-index4.html
+index3.html
 
 # Javascript
 js/bootstrap.min.js
 js/jquery.min.js
 
-# Stylesheets
-css/bootstrap.min.css
-css/bootstrap-theme.min.css
