@@ -637,7 +637,7 @@ function addZero(i) {
 function getWeatherFromWoeid(woeid) {
   var celsius = options.units; //== 'celsius';
 	//console.log(celsius);
-	var query = encodeURI("select * from weather.forecast where woeid = " + woeid + " and u = " + (celsius ? "\"f\"" : "\"c\""));
+	var query = encodeURI("select * from weather.forecast where woeid = " + woeid + " and u = " + (celsius ? "\"c\"" : "\"f\""));
 	var url = "http://query.yahooapis.com/v1/yql?q=" + query + "&format=json";
 	
 	var accessor = {
@@ -669,51 +669,13 @@ url = url + '&' + OAuth.formEncode(message.parameters);
         //console.log(req.responseText);
 		response = JSON.parse(req.responseText);
         if (response) {
-			//var condition = response.query.results.channel.item.condition;
 			var forecast = response.query.results.channel.item;
-			//var today = "L: "+forecast.forecast[0].low + "\u00B0" + "\n" + "H: "+forecast.forecast[0].high + "\u00B0" + "\n" + forecast.forecast[0].text;				
-			var temperature = forecast.condition.temp+"\u00B0" /*+ (celsius ? "\u00B0C" : "\u00B0")*/;
-			//var temperature = "-20"+"\u00B0" /*+ (celsius ? "\u00B0C" : "\u00B0")*/;
-			///var temp = parseInt(temperature);
-          //var icon = imageId[forecast.condition.code];
-			//var high = forecast.forecast[0].high;
-			var temp_range = "Today: " +  forecast.forecast[0].text +"\n"+ forecast.forecast[0].low+"\u00B0" + "-" +forecast.forecast[0].high+"\u00B0" ;
-			//var temp_range = "Today: " +  "mixed snow and sleet" +"\n"+ forecast.forecast[0].low+"\u00B0" + "-" +forecast.forecast[0].high+"\u00B0" ;
-			//var change = pressure[response.query.results.channel.atmosphere.rising];
-			var dig_rise = response.query.results.channel.astronomy.sunrise.split(":");
-			//console.log(dig_rise);
-			var min_rise = dig_rise[1].split(" ");
-			var dig_set = response.query.results.channel.astronomy.sunset.split(":");
-			var min_set = dig_set[1].split(" ");
-			
-			var astro = dig_rise[0]+":"+addZero(min_rise[0])+ " "+min_rise[1] + "\n" + dig_set[0]+":"+addZero(min_set[0])+ " "+min_set[1];
-			//var astro = addZero(response.query.results.channel.astronomy.sunrise) + "\n" + addZero(response.query.results.channel.astronomy.sunset);
-			//var station = temp_range + "\n" + response.query.results.channel.wind.speed + response.query.results.channel.units.speed + ", " + response.query.results.channel.wind.chill +  "\u00B0 Chill" +  "\nHumid: " + response.query.results.channel.atmosphere.humidity + "%\n" +response.query.results.channel.atmosphere.pressure +response.query.results.channel.units.pressure + " " + pressure[response.query.results.channel.atmosphere.rising] + "\n" + astro;
-			var wind = "Wind: " + response.query.results.channel.wind.speed + response.query.results.channel.units.speed + "\n" + response.query.results.channel.wind.chill +  "\u00B0 Chill";
-			//var atmos = "H: " + response.query.results.channel.atmosphere.humidity + "%\n P: " +response.query.results.channel.atmosphere.pressure +response.query.results.channel.units.pressure + "\n" + pressure[response.query.results.channel.atmosphere.rising];
-			var atmos = "P: " +response.query.results.channel.atmosphere.pressure +response.query.results.channel.units.pressure + " "+ pressure[response.query.results.channel.atmosphere.rising]+"\nH: " + response.query.results.channel.atmosphere.humidity + "%";
-			var condit = "Now: " + forecast.condition.text + "\n" + temp_range;
-			//console.log (astro);
-			//console.log (atmos);
-			//console.log (wind);
-			
-			//console.log("conditions " + condit);
+			var temperature = forecast.condition.temp+"\u00B0";
 			//console.log("temp " + temperature);
            
-			//console.log("temp range " + temp_range);
-			
-           
           Pebble.sendAppMessage({
-			  "conditions":condit,
-			  "astro":astro,
-			  "wind":wind,
-			  "atmos":atmos,
-			//"icon":icon,
-           "temperature":temperature,
-			  //"low":station,
-			  //"high":high,
-			  //"today":today,
-			  //"timezone":getTimezoneNameAndOffset().hours,
+			  "temperature":temperature,
+			  
           });
         }
       } else {
