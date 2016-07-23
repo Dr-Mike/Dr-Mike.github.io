@@ -55,7 +55,7 @@
         <p><small>Secondary timezone. Daylight savings time calculated for location using TimezoneDB.</small></p>
         <div class="btn-group" data-toggle="buttons">
           <label class="btn btn-primary">
-              <select id="timezone1">
+              <select id="timezoneA">
                 <option value="0">(GMT) Casablanca</option>
                 <option value="0">(GMT) Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London</option>
                 <option value="0">(GMT) Monrovia, Reykjavik</option>
@@ -154,7 +154,7 @@
         <p><small>Secondary timezone. Daylight savings time calculated for location using TimezoneDB.</small></p>
         <div class="btn-group" data-toggle="buttons">
           <label class="btn btn-primary">
-              <select id="timezone2">
+              <select id="timezoneB">
                 <option value="0">(GMT) Casablanca</option>
                 <option value="0">(GMT) Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London</option>
                 <option value="0">(GMT) Monrovia, Reykjavik</option>
@@ -281,8 +281,8 @@
         //mHands = parseInt(localStorage.getItem("hands"));
         //mStyle = parseInt(localStorage.getItem("style"));
         //mBackground = parseInt(localStorage.getItem("background"));
-        mTimezone1 = parseInt(localStorage.getItem("timezone1"));
-        mTimezone2 = parseInt(localStorage.getItem("timezone2"));
+        mTimezone1 = parseInt(localStorage.getItem("timezoneA"));
+        mTimezone2 = parseInt(localStorage.getItem("timezoneB"));
         if(isNaN(mUnits)) {
           mUnits = fahrenheit;
         }
@@ -345,8 +345,8 @@
           $('#bluetoothvibe2').parent().addClass('active'); 
         }
         
-        $('#timezone1').prop("selectedIndex",mTimezone1);
-        $('#timezone2').prop("selectedIndex",mTimezone2);
+        $('#timezoneA').prop("selectedIndex",mTimezone1);
+        $('#timezoneB').prop("selectedIndex",mTimezone2);
       });
       $("#configure-form").submit(function(e) {  
         mUnits = $('#units1').prop('checked') ? 1 : 0;
@@ -355,8 +355,8 @@
         mBluetoothvibe = $('#bluetoothvibe1').prop('checked') ? 1 : 0;
         //mVibeMinutes = $('#vibeminutes1').val();
         //mHands = $('#hands1').prop('checked') ? 1 : 0;
-        mTimezone1 = $('#timezone1').prop("selectedIndex");
-        mTimezone2 = $('#timezone2').prop("selectedIndex");
+        mTimezone1 = $('#timezoneA').prop("selectedIndex");
+        mTimezone2 = $('#timezoneB').prop("selectedIndex");
         
         /*mStyle = $('#style1').prop('checked') ? 0 : mStyle;
         mStyle = $('#style2').prop('checked') ? 1 : mStyle;
@@ -373,8 +373,8 @@
         //localStorage.setItem("hands", mHands); 
         //localStorage.setItem("style", mStyle); 
         //localStorage.setItem("background", mBackground); 
-        localStorage.setItem("timezone1", mTimezone1); 
-        localStorage.setItem("timezone2", mTimezone2); 
+        localStorage.setItem("timezoneA", mTimezone1); 
+        localStorage.setItem("timezoneB", mTimezone2); 
         
         var j = {
           units : parseInt(mUnits),
