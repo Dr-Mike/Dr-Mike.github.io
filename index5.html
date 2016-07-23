@@ -268,8 +268,8 @@
       //var mHands;
       //var mStyle;
       //var mBackground;
-      var mTimezone1;
-      var mTimezone2;
+      var mTimezoneA;
+      var mTimezoneB;
       
       $().ready(function () {
       
@@ -281,8 +281,8 @@
         //mHands = parseInt(localStorage.getItem("hands"));
         //mStyle = parseInt(localStorage.getItem("style"));
         //mBackground = parseInt(localStorage.getItem("background"));
-        mTimezone1 = parseInt(localStorage.getItem("timezoneA"));
-        mTimezone2 = parseInt(localStorage.getItem("timezoneB"));
+        mTimezoneA = parseInt(localStorage.getItem("timezoneA"));
+        mTimezoneB = parseInt(localStorage.getItem("timezoneB"));
         if(isNaN(mUnits)) {
           mUnits = fahrenheit;
         }
@@ -292,11 +292,11 @@
         if(isNaN(mBluetoothvibe)) {
           mBluetoothvibe = 1;
         } 
-        if(isNaN(mTimezone1)) {
-          mTimezone1 = 0;
+        if(isNaN(mTimezoneA)) {
+          mTimezoneA = 0;
         } 
-        if(isNaN(mTimezone2)) {
-          mTimezone2 = 0;
+        if(isNaN(mTimezoneB)) {
+          mTimezoneB = 0;
         } 
         
         
@@ -345,8 +345,8 @@
           $('#bluetoothvibe2').parent().addClass('active'); 
         }
         
-        $('#timezoneA').prop("selectedIndex",mTimezone1);
-        $('#timezoneB').prop("selectedIndex",mTimezone2);
+        $('#timezoneA').prop("selectedIndex",mTimezoneA);
+        $('#timezoneB').prop("selectedIndex",mTimezoneB);
       });
       $("#configure-form").submit(function(e) {  
         mUnits = $('#units1').prop('checked') ? 1 : 0;
@@ -355,8 +355,8 @@
         mBluetoothvibe = $('#bluetoothvibe1').prop('checked') ? 1 : 0;
         //mVibeMinutes = $('#vibeminutes1').val();
         //mHands = $('#hands1').prop('checked') ? 1 : 0;
-        mTimezone1 = $('#timezoneA').prop("selectedIndex");
-        mTimezone2 = $('#timezoneB').prop("selectedIndex");
+        mTimezoneA = $('#timezoneA').prop("selectedIndex");
+        mTimezoneB = $('#timezoneB').prop("selectedIndex");
         
         /*mStyle = $('#style1').prop('checked') ? 0 : mStyle;
         mStyle = $('#style2').prop('checked') ? 1 : mStyle;
@@ -373,8 +373,8 @@
         //localStorage.setItem("hands", mHands); 
         //localStorage.setItem("style", mStyle); 
         //localStorage.setItem("background", mBackground); 
-        localStorage.setItem("timezoneA", mTimezone1); 
-        localStorage.setItem("timezoneB", mTimezone2); 
+        localStorage.setItem("timezoneA", mTimezoneA); 
+        localStorage.setItem("timezoneB", mTimezoneB); 
         
         var j = {
           units : parseInt(mUnits),
@@ -384,8 +384,8 @@
           //vibeminutes: parseInt(mVibeMinutes),
           //hands: parseInt(mHands),
           //style: parseInt(mStyle),
-          timezone1: parseInt(mTimezone1),
-          timezone2: parseInt(mTimezone2),
+          timezoneA: parseInt(mTimezoneA),
+          timezoneB: parseInt(mTimezoneB),
           //background: parseInt(mBackground)
         };
         
